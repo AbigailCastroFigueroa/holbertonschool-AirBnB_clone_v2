@@ -8,13 +8,14 @@ app = Flask(__name__)
 
 @app.route('/states_list', strict_slashes=False)
 def state_search():
-    """"""
+    """Retrieve selected data."""
     data = storage.all(State).values()
     return render_template('7-states_list.html', states=data)
 
 
 @app.teardown_appcontext
 def end_session(self):
+    """Close session."""
     storage.close()
 
 
